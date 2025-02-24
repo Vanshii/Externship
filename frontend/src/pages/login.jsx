@@ -16,7 +16,12 @@ const Login = () => {
         { email, password }
       );
       alert(res.data.message);
-      navigate("/dashboard"); // Redirect to dashboard after login
+      if(role === "admin") {
+        navigate("/adminDashboard"); // Redirect to admin dashboard after login
+      } else {
+        navigate("/studentDashboard"); // Redirect to student dashboard after login
+      }
+      // navigate("/dashboard"); // Redirect to dashboard after login
     } catch (err) {
       alert(err.response?.data?.message || "Login failed");
     }
