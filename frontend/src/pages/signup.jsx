@@ -24,18 +24,41 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <h2>Signup</h2>
-      <form onSubmit={handleSignup}>
-        <input type="text" placeholder="username" value={username} onChange={(e) => setName(e.target.value)} required />
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <select value={role} onChange={(e) => setRole(e.target.value)}>
-          <option value="student">Student</option>
-          <option value="admin">Admin</option>
-        </select>
-        <button type="submit">Signup</button>
-      </form>
+    <div className="container d-flex justify-content-center align-items-center vh-100">
+      <div className="card p-4 shadow-lg" style={{ width: "400px" }}>
+        <h2 className="text-center mb-4">Create Account</h2>
+        
+        <form onSubmit={handleSignup}>
+          <div className="mb-3">
+            <label className="form-label">Username</label>
+            <input type="text" className="form-control" placeholder="Enter username" value={username} onChange={(e) => setName(e.target.value)} required />
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label">Email</label>
+            <input type="email" className="form-control" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label">Password</label>
+            <input type="password" className="form-control" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label">Role</label>
+            <select className="form-select" value={role} onChange={(e) => setRole(e.target.value)}>
+              {/* <option value="student">Student</option> */}
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+
+          <button type="submit" className="btn btn-primary w-100">Sign Up</button>
+        </form>
+        
+        <p className="mt-3 text-center">
+          Already have an account? <a href="/login" className="text-decoration-none">Login</a>
+        </p>
+      </div>
     </div>
   );
 };
