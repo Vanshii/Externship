@@ -168,25 +168,25 @@ const AdminDashboard = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item" style={styles.navItem}>
-                <a className="nav-link" href="/about">About</a>
+                <a className="nav-link" href="/about"></a>
               </li>
               <li className="nav-item" style={styles.navItem}>
-                <a className="nav-link" href="/what-you-get">What you get</a>
+                <a className="nav-link" href="/what-you-get"></a>
               </li>
               <li className="nav-item" style={styles.navItem}>
-                <a className="nav-link" href="/courses">Courses</a>
+                <a className="nav-link" href="/courses"></a>
               </li>
               <li className="nav-item" style={styles.navItem}>
-                <a className="nav-link" href="/pricing">Pricing</a>
+                <a className="nav-link" href="/pricing"></a>
               </li>
               <li className="nav-item" style={styles.navItem}>
-                <a className="nav-link" href="/faqs">FAQs</a>
+                <a className="nav-link" href="/faqs"></a>
               </li>
               <li className="nav-item" style={styles.navItem}>
-                <a className="nav-link" href="/contact">Contact</a>
+                <a className="nav-link" href="/contact"></a>
               </li>
               <li className="nav-item" style={styles.navItem}>
-                <a className="nav-link" href="/t-shaped">T-Shaped</a>
+                <a className="nav-link" href="/t-shaped"></a>
               </li>
             </ul>
             <div className="d-flex align-items-center ms-3">
@@ -195,8 +195,8 @@ const AdminDashboard = () => {
                   {username}
                 </button>
                 <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                  <li><a className="dropdown-item" href="/profile">Profile</a></li>
-                  <li><a className="dropdown-item" href="/settings">Settings</a></li>
+                  {/* <li><a className="dropdown-item" href="/profile">Profile</a></li>
+                  <li><a className="dropdown-item" href="/settings">Settings</a></li> */}
                   <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="#" onClick={handleLogout}>Logout</a></li>
                 </ul>
@@ -208,10 +208,10 @@ const AdminDashboard = () => {
 
       <div className="container py-5">
         {/* Updates banner */}
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <span style={styles.updates} className="me-3">Updates</span>
           <span>Second Cohort Starts On March</span>
-        </div>
+        </div> */}
 
         {/* Dashboard Title */}
         <div className="row mb-5">
@@ -234,7 +234,7 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        {/* Recent Activity */}
+        {/* Recent Activity
         <div className="row mt-5">
           <div className="col-12">
             <div className="card" style={styles.card}>
@@ -267,7 +267,7 @@ const AdminDashboard = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Footer */}
       <footer className="bg-light py-4 mt-5">
@@ -284,6 +284,7 @@ const AdminDashboard = () => {
         </div>
       </footer>
     </div>
+  </div>
   );
 };
 

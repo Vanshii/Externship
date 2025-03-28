@@ -12,23 +12,63 @@ const Attendance = ({ navigate }) => {
   // Get token from localStorage
   const token = localStorage.getItem("token");
 
+  // const fetchAttendance = () => {
+  //   // Validate date selection
+  //   if (!selectedDate) {
+  //     setError("Please select a date");
+  //     return;
+  //   }
+
+  //   setIsLoading(true);
+  //   setError("");
+
+  //   fetch(`http://localhost:5000/attendance/date`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //     body: JSON.stringify({ date: selectedDate })
+  //   })
+  //     .then((response) => {
+  //       if (response.status === 401) {
+  //         localStorage.removeItem("token");
+  //         navigate("/login");
+  //         return;
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       setIsLoading(false);
+  //       if (data.message) {
+  //         setAttendanceRecords([]);
+  //         setError(data.message);
+  //       } else {
+  //         setAttendanceRecords(data);
+  //         setError("");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       setIsLoading(false);
+  //       console.error("Error:", error);
+  //       setError("Error.");
+  //     });
+  // };
   const fetchAttendance = () => {
-    // Validate date selection
     if (!selectedDate) {
       setError("Please select a date");
       return;
     }
-
+  
     setIsLoading(true);
     setError("");
-
-    fetch(`http://localhost:5000/attendance/date`, {
-      method: "POST",
+  
+    fetch(`http://localhost:5000/attendance/date?date=${selectedDate}`, {  // Change to GET request with query parameter
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ date: selectedDate })
     })
       .then((response) => {
         if (response.status === 401) {
@@ -50,10 +90,11 @@ const Attendance = ({ navigate }) => {
       })
       .catch((error) => {
         setIsLoading(false);
-        console.error("Error fetching attendance:", error);
-        setError("Error fetching attendance.");
+        console.error("Error:", error);
+        setError("Error.");
       });
   };
+  
 
   return (
     <Container className="mt-4">
