@@ -20,6 +20,14 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
+
+const upload = uploadToS3("micro_content_videos");
+
+// Upload API
+app.post("/upload", upload.single("file"), (req, res) => {
+    res.json({ message: "File uploaded successfully!", fileUrl: req.file.location });
+});
+
 // Routes
 app.use("/admin", adminRoutes);
 app.use("/student", studentRoutes);

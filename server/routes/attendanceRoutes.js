@@ -13,21 +13,45 @@ router.get("/all", async (req, res) => {
   }
 });
 
+// router.get("/date", async (req, res) => {
+//   try {
+//     const { date } = req.query; // Get date from query parameters
+//     if (!date) {
+//       return res.status(400).json({ message: "Date is required" });
+//     }
+
+//     // Convert the date string (YYYY-MM-DD) to a proper Date object
+//     const startDate = new Date(date);
+//     const endDate = new Date(date);
+//     endDate.setDate(endDate.getDate() + 1); // Move to the next day to cover full range
+
+//     const attendanceRecords = await Attendance.find({
+//       date: { $gte: startDate, $lt: endDate } // Find records for the specific date
+//     });
+
+//     res.json(attendanceRecords);
+//   } catch (error) {
+//     console.error("Error fetching attendance by date:", error.message);
+//     res.status(500).json({ message: error.message });
+//   }
+// });
 router.get("/date", async (req, res) => {
   try {
-    const { date } = req.query; // Get date from query parameters
+    const { date } = req.query;
     if (!date) {
       return res.status(400).json({ message: "Date is required" });
     }
 
-    // Convert the date string (YYYY-MM-DD) to a proper Date object
-    const startDate = new Date(date);
-    const endDate = new Date(date);
-    endDate.setDate(endDate.getDate() + 1); // Move to the next day to cover full range
+    console.log("Searching for date:", date); // Debugging log
 
-    const attendanceRecords = await Attendance.find({
-      date: { $gte: startDate, $lt: endDate } // Find records for the specific date
-    });
+    // Query using exact string match since 'date' is stored as a string
+    const attendanceRecords = await Attendance.find({ date });
+
+    console.log("Found records:", attendanceRecords); // Debugging log
+
+    if (attendanceRecords.length === 0) {
+      return res.status(404).json({ message: "No attendance records found for the selected date." });
+    }
 
     res.json(attendanceRecords);
   } catch (error) {
@@ -35,6 +59,7 @@ router.get("/date", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
 
 
 
